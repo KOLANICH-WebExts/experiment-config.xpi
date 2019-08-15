@@ -1,0 +1,161 @@
+[
+	{
+		"namespace": "experiments.config"
+		,"description": "Parses about:config API into WebExtensions"
+		,"permissions": ["experiments.config"]
+		,"functions": [{
+				"name": "prefGet"
+				,"type": "function"
+				,"description": "Returns about:config pref value. The name is strange because when using `get` it silently just doesn't work"
+				,"parameters": [{
+						"type": "string"
+						,"name": "name"
+						,"description": "Name of param to get"
+						,"optional": false
+					}
+				]
+				,"async": true
+			}
+			,{
+				"name": "prefSet",
+				"type": "function"
+				,"description": "Sets about:config pref value. The name is strange because when using `get` it silently just doesn't work"
+				,"parameters": [{
+						"type": "string"
+						,"name": "name"
+						,"description": "Name of param to set"
+						,"optional": false
+					}
+					,{
+						"type": "any"
+						,"name": "value"
+						,"description": "Value to set"
+						,"optional": false
+					}
+				]
+				,"async": true
+			}
+			,{
+				"name": "prefReset"
+				,"type": "function"
+				,"description": "Removes nondefault pref"
+				,"parameters": [{
+						"type": "string"
+						,"name": "name"
+						,"description": "Name of the pref"
+						,"optional": false
+					}
+				]
+				,"async": true
+			}
+			,{
+				"name": "prefLock"
+				,"type": "function"
+				,"description": "Locks a pref"
+				,"parameters": [{
+						"type": "string"
+						,"name": "name"
+						,"description": "Name of the pref"
+						,"optional": false
+					}
+				]
+				,"async": true
+			}
+			,{
+				"name": "prefUnlock"
+				,"type": "function"
+				,"description": "Unlocks a pref"
+				,"parameters": [{
+						"type": "string"
+						,"name": "name"
+						,"description": "Name of the pref"
+						,"optional": false
+					}
+				]
+				,"async": true
+			}
+			,{
+				"name": "prefIsLocked"
+				,"type": "function"
+				,"description": "Returns true if a pref is locked"
+				,"parameters": [{
+						"type": "string"
+						,"name": "name"
+						,"description": "Name of the pref"
+						,"optional": false
+					}
+				]
+				,"returns": {
+					"type": "boolean"
+					,"description": "if a pref is locked"
+				}
+				,"async": true
+			},{
+				"name": "prefHasUserValue"
+				,"type": "function"
+				,"description": "Returns true if a pref has been set by a user"
+				,"parameters": [{
+						"type": "string"
+						,"name": "name"
+						,"description": "Name of the pref"
+						,"optional": false
+					}
+				]
+				,"returns": {
+					"type": "boolean"
+					,"description": "if a pref has been set by a user"
+				}
+				,"async": true
+			}
+			,{
+				"name": "getChildList",
+				"type": "function",
+				"description": "Returns list of the defined prefs starting from the provided prefix",
+				"parameters": [{
+						"type": "string"
+						,"name": "name"
+						,"description": "Name of the branch root"
+						,"optional": true
+						,"default": ""
+					}
+				],
+				"returns": {
+					"type": "array"
+					,"items": {
+						"type": "string"
+					}
+					,"description": "prefs names relatively to the root"
+				}
+				,"async": true
+			}
+		]
+		,"events": [
+			{
+				"name": "onChange",
+				"type": "function",
+				"description": "Description of the event",
+				"parameters": [
+					{
+						"name": "topic"
+						,"description": "Description of the first callback parameter"
+						,"type": "string"
+					},
+					{
+						"name": "refPath"
+						,"description": "Path of the changed pref"
+						,"type": "string"
+					}
+				],
+				"extraParameters": [
+					{
+						"type": "string"
+						,"name": "branch"
+						,"description": "Name of the pref branch to be notified"
+						,"optional": true
+						,"default": ""
+					}
+				]
+			}
+		]
+	}
+]

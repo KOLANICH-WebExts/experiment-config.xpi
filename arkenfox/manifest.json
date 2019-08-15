@@ -1,0 +1,34 @@
+{
+	"manifest_version" : 2
+	,"name" : "arkenfox about:config merger"
+	,"short_name": "arkenfox"
+	,"author": "KOLANICH"
+	,"homepage_url": "https://github.com/arkenfox/user.js"
+	,"description" : "Inspects about:config for issues. Allows applying arkenfox user.js with a single click."
+	,"version" : "0.0"
+	,"incognito": "not_allowed"
+	,"applications" : {
+		"gecko" : {
+			"id" : "configInspector@experiments.addons.mozilla.org"
+		}
+	}
+	,"options_ui": {
+		"page": "gui.html"
+		,"open_in_tab": true
+	}
+	,"icons":{
+		"16": "logo.svg"
+		,"32": "logo.svg"
+		,"48": "logo.svg"
+		,"64": "logo.svg"
+		,"96": "logo.svg"
+	}
+	,"browser_action" : {
+		"default_title" : "Inspects about:config",
+		"browser_style" : true
+	}
+	,"background" : {
+		"scripts" : ["background.js", "arkenfoxChecker.js", "shittyUserJSParser.js"]
+	}
+	,"permissions" : ["https://raw.githubusercontent.com/arkenfox/user.js/master/user.js", "experiments.parse", "experiments.config"]
+}

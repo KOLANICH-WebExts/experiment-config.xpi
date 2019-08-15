@@ -1,0 +1,11 @@
+name: CI
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: typical webextension workflow
+        uses: KOLANICH-GHActions/typical-firefox-webextensions-workflow@master

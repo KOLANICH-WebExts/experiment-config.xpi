@@ -1,0 +1,25 @@
+{
+	"manifest_version" : 2
+	,"name" : "about:config prefs unlocker"
+	,"author": "KOLANICH"
+	,"homepage_url": "https://github.com/KOLANICH/webext-experiment-config/tree/master/unlocker"
+	,"description" : "Inspects about:config for locked prefs and just unlocks them."
+	,"version" : "0.0"
+	,"incognito": "not_allowed"
+	,"applications" : {
+		"gecko" : {
+			"id" : "configUnlocker@experiments.addons.mozilla.org"
+		}
+	}
+	,"icons":{
+		"16": "logo.svg"
+		,"32": "logo.svg"
+		,"48": "logo.svg"
+		,"64": "logo.svg"
+		,"96": "logo.svg"
+	}
+	,"background" : {
+		"scripts" : ["background.js"]
+	}
+	,"permissions" : ["experiments.config"]
+}
